@@ -9,5 +9,5 @@ import java.net.URI;
 
 public interface InterfaceQuestionnaire {
 
-    public QuestionnaireBO chargerFileQuestionnaire(URI path)throws FileNoteFoundExeption, ErrorWhileLoadingException, QuestionnaireEmptyException, DoubleQuestionException,WrongFileTypeException;
+    public QuestionnaireBO chargerFileQuestionnaire(URI path)throws FileNoteFoundExeption, ErrorWhileLoadingException, QuestionnaireEmptyException, DoubleQuestionException,WrongFileTypeException,IncompleteQuestionException;
 }
