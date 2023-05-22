@@ -43,7 +43,7 @@ public class serviceQuestionnaireBeanTest {
     public void chargerFileQuestionnaireErrorWhileLoadingException(){
         ajouterQuestionnaireErrorWhileLoadingExceptionMock i1 = new ajouterQuestionnaireErrorWhileLoadingExceptionMock();
             assertThrows(ErrorWhileLoadingException.class, () -> {
-                i1.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+                i1.chargerFileQuestionnaire(URI.create("../questionsErrorWhileLoadingException.csv"));
             });
     }
 
@@ -54,7 +54,7 @@ public class serviceQuestionnaireBeanTest {
     public void chargerFileQuestionnaireFileNotFoundException(){
         ajouterQuestionnaireFileNoteFoundExceptionMock i2 = new ajouterQuestionnaireFileNoteFoundExceptionMock();
         assertThrows(FileNoteFoundExeption.class, () -> {
-            i2.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+            i2.chargerFileQuestionnaire(URI.create("../EhBahNon.csv"));
         });
     }
 
@@ -63,7 +63,7 @@ public class serviceQuestionnaireBeanTest {
     public void chargerFileQuestionnaireIncompleteQuestionException(){
         ajouterQuestionnaireIncompleteQuestionExceptionMock i3 = new ajouterQuestionnaireIncompleteQuestionExceptionMock();
         assertThrows(IncompleteQuestionException.class, () -> {
-            i3.chargerFileQuestionnaire(URI.create("../questionTrue.csv"));
+            i3.chargerFileQuestionnaire(URI.create("../questionIncompleteQuestionException.csv"));
         });
     }
 
@@ -72,7 +72,7 @@ public class serviceQuestionnaireBeanTest {
     public void chargerFileQuestionnaireQuestionnaireEmptyException(){
         ajouterQuestionnaireQuestionnaireEmptyExceptionMock i4 = new ajouterQuestionnaireQuestionnaireEmptyExceptionMock();
         assertThrows(QuestionnaireEmptyException.class, () -> {
-            i4.chargerFileQuestionnaire(URI.create("../questionTrue.csv"));
+            i4.chargerFileQuestionnaire(URI.create("../questionQuestionnaireEmptyException.csv"));
         });
     }
 
@@ -81,7 +81,7 @@ public class serviceQuestionnaireBeanTest {
     public void chargerFileQuestionnaireWrongFileTypeException(){
         ajouterQuestionnaireWrongFileTypeExceptionMock i5 = new ajouterQuestionnaireWrongFileTypeExceptionMock();
         assertThrows(WrongFileTypeException.class, () -> {
-            i5.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+            i5.chargerFileQuestionnaire(URI.create("../questionsWrongFileTypeException.csv.pdf"));
         });
     }
 }
