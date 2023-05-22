@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class QuestionnaireBO {
     private int idQuestionnaire;
-
     ArrayList<QuestionBO> questions;
+    public QuestionnaireBO(int idQuestionnaire, ArrayList<QuestionBO> questions) {
+        this.idQuestionnaire = idQuestionnaire;
+        this.questions = questions;
+    }
+
+
 }
