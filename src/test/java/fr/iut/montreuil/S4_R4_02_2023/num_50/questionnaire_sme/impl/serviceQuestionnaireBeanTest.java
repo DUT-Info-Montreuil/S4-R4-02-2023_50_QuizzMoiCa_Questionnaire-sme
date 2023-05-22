@@ -1,15 +1,13 @@
 package fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.impl;
 
-import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.bo.QuestionBO;
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.bo.QuestionnaireBO;
-import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.dto.QuestionnaireDTO;
-import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.mocks.ajouterQuestionnaireCorrectMock;
-import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.mocks.ajouterQuestionnaireIncorectMock;
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.modeles.InterfaceQuestionnaire;
+import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.utilies.exeptions.*;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class serviceQuestionnaireBeanTest {
 
@@ -19,31 +17,85 @@ public class serviceQuestionnaireBeanTest {
     @Test
     public void chargerFileQuestionnaire(){
 
-        try {
-            QuestionnaireBo questionnaire = new QuestionnaireBO(10, new ArrayList<QuestionBO>());
-            serviceQuestionnaireBeanTest = new ajouterQuestionnaireCorrectMock();
-            QuestionnaireBO questionnaireResultat = new ajouterQuestionnaireCorrectMock().chargerFileQuestionnaire(10, new ArrayList<QuestionBO>());
 
-            Assertions.assertSame(questionnaire, questionnaireResultat);
-
-        }catch Exception e{
-             e.printStackTrace();
-        }
     }
 
-    //Incorect one
+    //DoubleQuestionException
     @Test
     public void chargerFileQuestionnaire(){
-
         try {
-            QuestionnaireBo questionnaire = new QuestionnaireBO(10, new ArrayList<QuestionBO>());
-            serviceQuestionnaireBeanTest = new ajouterQuestionnaireIncorectMock();
-            QuestionnaireBO questionnaireResultat = new ajouterQuestionnaireIncorectMock().chargerFileQuestionnaire(10, new ArrayList<QuestionBO>());
-
-            Assertions.assertSame(questionnaire, questionnaireResultat);
-
-        }catch Exception e{
+            QuestionnairesBo q = QuestionnairesBo;
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire("blabla"));
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire("blabla"));
+        }catch DoubleQuestionException e{
             e.printStackTrace();
+            assertTrue(e.equals(DoubleQuestionException));
         }
+        return false;
+    }
+
+    //ErrorWhileLoadingException
+    @Test
+    public void chargerFileQuestionnaire(){
+        try {
+            QuestionnairesBo q = QuestionnairesBo;
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire(null));
+        }catch ErrorWhileLoadingException e{
+            e.printStackTrace();
+            assertTrue(e.equals(ErrorWhileLoadingException));
+        }
+        return false;
+    }
+
+    //FileNotFoundException
+    @Test
+    public void chargerFileQuestionnaire(){
+        try {
+            QuestionnairesBo q = QuestionnairesBo;
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire("kllkfe,zef"));
+        }catch FileNoteFoundExeption e{
+            e.printStackTrace();
+            assertTrue(e.equals(FileNoteFoundExeption));
+        }
+        return false;
+    }
+
+    //IncompleteQuestionException
+    @Test
+    public void chargerFileQuestionnaire(){
+        try {
+            QuestionnairesBo q = QuestionnairesBo;
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire("QuestionnaireQuestionIncomplette"));
+        }catch IncompleteQuestionException e{
+            e.printStackTrace();
+            assertTrue(e.equals(IncompleteQuestionException));
+        }
+        return false;
+    }
+
+    //QuestionnaireEmptyException
+    @Test
+    public void chargerFileQuestionnaire(){
+        try {
+            QuestionnairesBo q = QuestionnairesBo;
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire("QuestionnaireEmpty"));
+        }catch QuestionnaireEmptyException e{
+            e.printStackTrace();
+            assertTrue(e.equals(QuestionnaireEmptyException));
+        }
+        return false;
+    }
+
+    //WrongFileTypeException
+    @Test
+    public void chargerFileQuestionnaire(){
+        try {
+            QuestionnairesBo q = QuestionnairesBo;
+            q.add(serviceQuestionnaireBeanTest.chargerFileQuestionnaire("QuestionnaireEmpty.pdf"));
+        }catch WrongFileTypeException e{
+            e.printStackTrace();
+            assertTrue(e.equals(WrongFileTypeException));
+        }
+        return false;
     }
 }
