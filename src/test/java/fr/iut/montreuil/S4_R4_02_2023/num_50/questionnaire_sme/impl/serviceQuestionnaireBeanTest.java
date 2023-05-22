@@ -17,13 +17,13 @@ public class serviceQuestionnaireBeanTest {
     @Test
     public void chargerFileQuestionnaireNoException() {
         ajouterQuestionnaireCorrectMock i = new ajouterQuestionnaireCorrectMock();
-        QuestionnaireBO q = null;
+        QuestionnaireBO questionnaire = null;
         try {
-            q = i.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+            questionnaire = i.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        assertTrue(q instanceof QuestionnaireBO);
+        assertTrue(questionnaire instanceof QuestionnaireBO);
     }
 
 
