@@ -12,4 +12,17 @@ public class QuestionBO {
     private String explication;
     private String source;
 
+    public QuestionBO(int numQuestion, Langue langues, String libelleQuestion, String reponse, Difficulty difficulty, String explication, String source) {
+        this.numQuestion = numQuestion;
+        this.langues = langues;
+        this.libelleQuestion = libelleQuestion;
+        this.reponse = reponse;
+        this.difficulty = difficulty;
+        this.explication = explication;
+        this.source = source;
+    }
+
+    public String getLibelleQuestion() {
+        return libelleQuestion;
+    }
 }
