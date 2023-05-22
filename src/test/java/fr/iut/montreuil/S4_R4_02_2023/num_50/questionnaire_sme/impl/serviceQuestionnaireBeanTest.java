@@ -16,7 +16,7 @@ public class serviceQuestionnaireBeanTest {
     //Correct One
     @Test
     public void chargerFileQuestionnaireNoException() {
-        ajouterQuestionnaireCorrectMock i = new ajouterQuestionnaireCorrectMock();
+        AjouterQuestionnaireCorrectMock i = new AjouterQuestionnaireCorrectMock();
         QuestionnaireBO questionnaire = null;
         try {
             questionnaire = i.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
@@ -30,9 +30,9 @@ public class serviceQuestionnaireBeanTest {
     //DoubleQuestionException
     @Test
     public void chargerFileQuestionnaireDoubleQuestionException(){
-        ajouterQuestionnaireDoubleQuestionExceptionMock i0 = new ajouterQuestionnaireDoubleQuestionExceptionMock();
+        AjouterQuestionnaireDoubleQuestionExceptionMock doubleQuestionException = new AjouterQuestionnaireDoubleQuestionExceptionMock();
         assertThrows(DoubleQuestionException.class, () -> {
-            i0.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+            doubleQuestionException.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
         });
     }
 
@@ -41,7 +41,7 @@ public class serviceQuestionnaireBeanTest {
     //ErrorWhileLoadingException
     @Test
     public void chargerFileQuestionnaireErrorWhileLoadingException(){
-        ajouterQuestionnaireErrorWhileLoadingExceptionMock i1 = new ajouterQuestionnaireErrorWhileLoadingExceptionMock();
+        AjouterQuestionnaireErrorWhileLoadingExceptionMock i1 = new AjouterQuestionnaireErrorWhileLoadingExceptionMock();
             assertThrows(ErrorWhileLoadingException.class, () -> {
                 i1.chargerFileQuestionnaire(URI.create("../questionsErrorWhileLoadingException.csv"));
             });
@@ -52,7 +52,7 @@ public class serviceQuestionnaireBeanTest {
     //FileNotFoundException
     @Test
     public void chargerFileQuestionnaireFileNotFoundException(){
-        ajouterQuestionnaireFileNoteFoundExceptionMock i2 = new ajouterQuestionnaireFileNoteFoundExceptionMock();
+        AjouterQuestionnaireFileNoteFoundExceptionMock i2 = new AjouterQuestionnaireFileNoteFoundExceptionMock();
         assertThrows(FileNoteFoundExeption.class, () -> {
             i2.chargerFileQuestionnaire(URI.create("../EhBahNon.csv"));
         });
@@ -61,7 +61,7 @@ public class serviceQuestionnaireBeanTest {
     //IncompleteQuestionException
     @Test
     public void chargerFileQuestionnaireIncompleteQuestionException(){
-        ajouterQuestionnaireIncompleteQuestionExceptionMock i3 = new ajouterQuestionnaireIncompleteQuestionExceptionMock();
+        AjouterQuestionnaireIncompleteQuestionExceptionMock i3 = new AjouterQuestionnaireIncompleteQuestionExceptionMock();
         assertThrows(IncompleteQuestionException.class, () -> {
             i3.chargerFileQuestionnaire(URI.create("../questionIncompleteQuestionException.csv"));
         });
@@ -70,7 +70,7 @@ public class serviceQuestionnaireBeanTest {
     //QuestionnaireEmptyException
     @Test
     public void chargerFileQuestionnaireQuestionnaireEmptyException(){
-        ajouterQuestionnaireQuestionnaireEmptyExceptionMock i4 = new ajouterQuestionnaireQuestionnaireEmptyExceptionMock();
+        AjouterQuestionnaireQuestionnaireEmptyExceptionMock i4 = new AjouterQuestionnaireQuestionnaireEmptyExceptionMock();
         assertThrows(QuestionnaireEmptyException.class, () -> {
             i4.chargerFileQuestionnaire(URI.create("../questionQuestionnaireEmptyException.csv"));
         });
@@ -79,7 +79,7 @@ public class serviceQuestionnaireBeanTest {
     //WrongFileTypeException
     @Test
     public void chargerFileQuestionnaireWrongFileTypeException(){
-        ajouterQuestionnaireWrongFileTypeExceptionMock i5 = new ajouterQuestionnaireWrongFileTypeExceptionMock();
+        AjouterQuestionnaireWrongFileTypeExceptionMock i5 = new AjouterQuestionnaireWrongFileTypeExceptionMock();
         assertThrows(WrongFileTypeException.class, () -> {
             i5.chargerFileQuestionnaire(URI.create("../questionsWrongFileTypeException.csv.pdf"));
         });

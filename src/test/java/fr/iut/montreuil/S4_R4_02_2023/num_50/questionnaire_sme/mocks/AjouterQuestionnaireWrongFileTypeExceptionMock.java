@@ -6,10 +6,10 @@ import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.utilies.exeptions
 
 import java.net.URI;
 
-public class ajouterQuestionnaireIncompleteQuestionExceptionMock implements InterfaceQuestionnaire {
+public class AjouterQuestionnaireWrongFileTypeExceptionMock implements InterfaceQuestionnaire {
 
     @Override
-    public QuestionnaireBO chargerFileQuestionnaire(URI path) throws FileNoteFoundExeption, ErrorWhileLoadingException, QuestionnaireEmptyException, DoubleQuestionException, WrongFileTypeException, IncompleteQuestionException {
-        throw new IncompleteQuestionException();
+    public QuestionnaireBO chargerFileQuestionnaire(URI path) throws FileNoteFoundExeption, ErrorWhileLoadingException, QuestionnaireEmptyException, DoubleQuestionException, WrongFileTypeException {
+        throw new WrongFileTypeException();
     }
 }
