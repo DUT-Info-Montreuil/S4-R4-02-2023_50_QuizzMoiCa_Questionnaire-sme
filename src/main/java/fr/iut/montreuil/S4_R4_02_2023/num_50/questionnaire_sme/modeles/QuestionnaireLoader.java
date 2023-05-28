@@ -89,6 +89,7 @@ public class QuestionnaireLoader implements InterfaceQuestionnaire {
         } catch (Exception exception) {
             // Capturer toutes les autres exceptions
             throw new ErrorWhileLoadingException();
+            //
         }
     }
 
