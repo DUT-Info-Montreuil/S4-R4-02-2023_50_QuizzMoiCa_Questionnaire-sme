@@ -2,8 +2,14 @@ package fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.impl;
 
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.bo.QuestionnaireBO;
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.mocks.*;
+import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.modeles.InterfaceQuestionnaire;
+import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.modeles.QuestionnaireLoader;
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.utilies.exeptions.*;
-import org.junit.Test;
+
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 
@@ -12,14 +18,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class serviceQuestionnaireBeanTest {
 
+    InterfaceQuestionnaire serviceQuestionnaireBeanTest;
+    @BeforeEach
+    public void init(){
+        serviceQuestionnaireBeanTest = new QuestionnaireLoader();
+    }
+
 
     //Correct One
     @Test
     public void chargerFileQuestionnaireNoException() {
-        AjouterQuestionnaireCorrectMock i = new AjouterQuestionnaireCorrectMock();
+       // serviceQuestionnaireBeanTest = new AjouterQuestionnaireCorrectMock();
         QuestionnaireBO questionnaire = null;
         try {
-            questionnaire = i.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+            questionnaire = serviceQuestionnaireBeanTest.chargerFileQuestionnaire(URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/questionsTrue.csv"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,9 +42,9 @@ public class serviceQuestionnaireBeanTest {
     //DoubleQuestionException
     @Test
     public void chargerFileQuestionnaireDoubleQuestionException(){
-        AjouterQuestionnaireDoubleQuestionExceptionMock doubleQuestionException = new AjouterQuestionnaireDoubleQuestionExceptionMock();
+       // serviceQuestionnaireBeanTest = new AjouterQuestionnaireDoubleQuestionExceptionMock();
         assertThrows(DoubleQuestionException.class, () -> {
-            doubleQuestionException.chargerFileQuestionnaire(URI.create("../questionsTrue.csv"));
+            serviceQuestionnaireBeanTest.chargerFileQuestionnaire(URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/questionDoubleQuestionException.csv"));
         });
     }
 
@@ -41,9 +53,9 @@ public class serviceQuestionnaireBeanTest {
     //ErrorWhileLoadingException
     @Test
     public void chargerFileQuestionnaireErrorWhileLoadingException(){
-        AjouterQuestionnaireErrorWhileLoadingExceptionMock i1 = new AjouterQuestionnaireErrorWhileLoadingExceptionMock();
+      //  serviceQuestionnaireBeanTest = new AjouterQuestionnaireErrorWhileLoadingExceptionMock();
             assertThrows(ErrorWhileLoadingException.class, () -> {
-                i1.chargerFileQuestionnaire(URI.create("../questionsErrorWhileLoadingException.csv"));
+                serviceQuestionnaireBeanTest.chargerFileQuestionnaire(URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/questionsErrorWhileLoadingException.csv"));
             });
     }
 
@@ -52,36 +64,39 @@ public class serviceQuestionnaireBeanTest {
     //FileNotFoundException
     @Test
     public void chargerFileQuestionnaireFileNotFoundException(){
-        AjouterQuestionnaireFileNoteFoundExceptionMock i2 = new AjouterQuestionnaireFileNoteFoundExceptionMock();
+       // serviceQuestionnaireBeanTest = new AjouterQuestionnaireFileNoteFoundExceptionMock();
+
+        URI path = URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/EtBahNon.csv");
+
         assertThrows(FileNoteFoundExeption.class, () -> {
-            i2.chargerFileQuestionnaire(URI.create("../EhBahNon.csv"));
+            serviceQuestionnaireBeanTest.chargerFileQuestionnaire(path);
         });
     }
 
     //IncompleteQuestionException
     @Test
     public void chargerFileQuestionnaireIncompleteQuestionException(){
-        AjouterQuestionnaireIncompleteQuestionExceptionMock i3 = new AjouterQuestionnaireIncompleteQuestionExceptionMock();
+      //  serviceQuestionnaireBeanTest = new AjouterQuestionnaireIncompleteQuestionExceptionMock();
         assertThrows(IncompleteQuestionException.class, () -> {
-            i3.chargerFileQuestionnaire(URI.create("../questionIncompleteQuestionException.csv"));
+            serviceQuestionnaireBeanTest.chargerFileQuestionnaire(URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/questionsIncompleteQuestionException.csv"));
         });
     }
 
     //QuestionnaireEmptyException
     @Test
     public void chargerFileQuestionnaireQuestionnaireEmptyException(){
-        AjouterQuestionnaireQuestionnaireEmptyExceptionMock i4 = new AjouterQuestionnaireQuestionnaireEmptyExceptionMock();
+      //  serviceQuestionnaireBeanTest = new AjouterQuestionnaireQuestionnaireEmptyExceptionMock();
         assertThrows(QuestionnaireEmptyException.class, () -> {
-            i4.chargerFileQuestionnaire(URI.create("../questionQuestionnaireEmptyException.csv"));
+            serviceQuestionnaireBeanTest.chargerFileQuestionnaire(URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/questionsQuestionnaireEmptyException.csv"));
         });
     }
 
     //WrongFileTypeException
     @Test
     public void chargerFileQuestionnaireWrongFileTypeException(){
-        AjouterQuestionnaireWrongFileTypeExceptionMock i5 = new AjouterQuestionnaireWrongFileTypeExceptionMock();
+  //      serviceQuestionnaireBeanTest = new AjouterQuestionnaireWrongFileTypeExceptionMock();
         assertThrows(WrongFileTypeException.class, () -> {
-            i5.chargerFileQuestionnaire(URI.create("../questionsWrongFileTypeException.csv.pdf"));
+            serviceQuestionnaireBeanTest.chargerFileQuestionnaire(URI.create("src/test/java/fr/iut/montreuil/S4_R4_02_2023/num_50/questionnaire_sme/ressources/questionsWrongFileTypeException.csv.pdf"));
         });
     }
 }
