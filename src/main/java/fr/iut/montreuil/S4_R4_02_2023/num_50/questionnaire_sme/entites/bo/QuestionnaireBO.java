@@ -10,5 +10,11 @@ public class QuestionnaireBO {
         this.questions = questions;
     }
 
+    public int getIdQuestionnaire() {
+        return idQuestionnaire;
+    }
 
+    public ArrayList<QuestionBO> getQuestions() {
+        return questions;
+    }
 }

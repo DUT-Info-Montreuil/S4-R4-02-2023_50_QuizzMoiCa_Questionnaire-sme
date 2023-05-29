@@ -25,4 +25,28 @@ public class QuestionBO {
     public String getLibelleQuestion() {
         return libelleQuestion;
     }
+
+    public int getNumQuestion() {
+        return numQuestion;
+    }
+
+    public Langue getLangues() {
+        return langues;
+    }
+
+    public String getReponse() {
+        return reponse;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public String getExplication() {
+        return explication;
+    }
+
+    public String getSource() {
+        return source;
+    }
 }
