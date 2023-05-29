@@ -1,8 +1,9 @@
 package fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.dto;
 
+import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.modeles.InterfaceQuestionStatistique;
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.utilies.exeptions.QuestionPasJouerException;
 
-public class QuestionStatistqueDTO {
+public class QuestionStatistqueDTO implements InterfaceQuestionStatistique {
 
     int nbRate;
     int nbReussi;
