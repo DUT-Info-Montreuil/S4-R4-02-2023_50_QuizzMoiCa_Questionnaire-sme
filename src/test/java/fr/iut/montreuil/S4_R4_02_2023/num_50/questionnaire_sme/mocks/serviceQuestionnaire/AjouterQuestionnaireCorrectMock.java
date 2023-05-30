@@ -1,4 +1,4 @@
-package fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.mocks;
+package fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.mocks.serviceQuestionnaire;
 
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.bo.QuestionBO;
 import fr.iut.montreuil.S4_R4_02_2023.num_50.questionnaire_sme.entites.bo.QuestionnaireBO;
